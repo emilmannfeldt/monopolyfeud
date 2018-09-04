@@ -1,0 +1,35 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+.game-container * {
+  border: 1px solid #ccc;
+}
+.game-container div:after {
+  content: attr(class);
+  color: #888;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: arial;
+}
+.game-container {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 5fr;
+  grid-gap: 1px 1px;
+}
+.game-middle {
+  display: grid;
+  grid-area: 2 / 2 / 11 / 11;
+  grid-gap: 1px 1px;
+}
+.actionarea {
+  display: grid;
+  grid-area: 12 / 1 / 13 / 12;
+  grid-gap: 1px 1px;
+}
+
