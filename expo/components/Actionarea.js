@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import { Col, Row, Grid } from 'react-native-easy-grid';
+
 //components:
 //app
 //board > square 
@@ -14,9 +16,27 @@ import { StyleSheet, Text, View } from 'react-native';
 export default class actionarea extends React.Component {
   render() {
     return (
-        <div >
-        actionarea
-      </div>
+      <Row size={10}>
+        <Col>
+          <Row size={1} style={styles.menubar}>
+            <Button title='options' onPress={alert('opstions')}>options</Button>
+            <Button title='sell' onPress={alert('sell')}>sell</Button>
+          </Row>
+          <Row size={7} style={styles.playerarea}>
+            <Text>
+              actionarea
+          </Text>
+          </Row>
+        </Col>
+      </Row>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  menubar: {
+    borderBottomColor: 'black',
+    borderWidth: 1
+  },
+});
+
