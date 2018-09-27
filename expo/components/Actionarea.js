@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import PropTypes from 'prop-types';
 
 //components:
 //app
@@ -14,18 +15,29 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 //jag skippar att använda middle board. jag använder det utrymmet bara till dialoger.
 //
 export default class actionarea extends React.Component {
+
+  move(){
+    let roll = this.props.ctx.random.Die(6, 2);
+    this.props.moves.walk(roll);
+
+  }
+  endTurn = () => {
+    this.props.events.endTurn();
+  };
   render() {
     return (
       <Row size={10}>
         <Col>
           <Row size={1} style={styles.menubar}>
             <Button title='options' onPress={alert('opstions')}>options</Button>
-            <Button title='sell' onPress={alert('sell')}>sell</Button>
+            <Button title='endturn' onPress={this.endTurn}>end turn</Button>
+            <Button title='roll' onPress={this.move}>move</Button>
           </Row>
           <Row size={7} style={styles.playerarea}>
             <Text>
               actionarea
           </Text>
+          
           </Row>
         </Col>
       </Row>

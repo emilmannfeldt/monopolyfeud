@@ -1,31 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Col, Row, Grid } from 'react-native-easy-grid';
-import Actionarea from './components/Actionarea';
-import Gameboard from './components/Gameboard';
+import { Image, StyleSheet, View } from 'react-native';
+import { Client } from 'boardgame.io/react-native';
 
-//components:
-//app
-//board > square 
-//actionarea > menubar> playerinfoarea > gameactiondialog > generalmessage > chat > gamelog
-//allt under actionarea är dialogrutor över spelplanen.
-export default class App extends React.Component {
+import Monopoly from './game';
+import Board from './board';
 
-  //row75 kanske ska vara en fast höjd? höjden ska vara samma som window.width då? 
-  //Gameboard.height = 100 vw; https://www.w3schools.com/cssref/css_units.asp 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Grid>
-          <Col>
-            <Gameboard/>
-            <Actionarea/>
-          </Col>
-        </Grid>
-      </View>
-    );
-  }
-}
+const App = Client({
+  game: Monopoly,
+  board: Board,
+});
+
+const Singleplayer = () => (
+  <View style={styles.container}>
+    <App gameID="single" />
+  </View>
+);
+
+export default Singleplayer;
 
 const styles = StyleSheet.create({
   container: {
@@ -33,5 +24,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  logo: {
+    width: 300,
+    height: 90,
+    marginBottom: 24,
   },
 });
